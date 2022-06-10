@@ -17,4 +17,9 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+int		ft_atoi(const char *str);
+void	ft_putstr(char *s);
+void	ft_putchar(char c);
+void	ft_putnbr(int n);
+
 #endif
