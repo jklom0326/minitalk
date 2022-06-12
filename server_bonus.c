@@ -6,7 +6,7 @@
 /*   By: shan <shan@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 22:40:31 by shan              #+#    #+#             */
-/*   Updated: 2022/06/13 02:41:52 by shan             ###   ########.fr       */
+/*   Updated: 2022/06/13 02:48:12 by shan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minitalk_bonus.h"
@@ -38,7 +38,7 @@ void	bitaction(int signum, siginfo_t *info, void *context)
 	{
 		if (!c)
 			failmassage(g_pid, SIGUSR1);
-		ft_puchar(c);
+		ft_putchar(c);
 		bit = 0;
 		c = 0xFF;
 	}
@@ -60,7 +60,7 @@ int	main(int ac, char **av)
 	ft_putstr("PID : ");
 	ft_putnbr(getpid());
 	ft_putchar('\n');
-	write(1)
-	pause();
+	while (1)
+		pause();
 	return (0);
 }
