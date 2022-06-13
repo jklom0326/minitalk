@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shan <shan@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: shan <shan@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 22:43:27 by shan              #+#    #+#             */
-/*   Updated: 2022/06/13 02:41:29 by shan             ###   ########.fr       */
+/*   Updated: 2022/06/13 17:51:51 by shan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minitalk_bonus.h"
@@ -14,7 +14,7 @@
 void	sft(int signum)
 {
 	if (signum == SIGUSR1)
-		ft_putstr("\nsuccess\n");
+		ft_putstr("send success\n");
 }
 
 void	binary(int pid, char *s)
@@ -30,19 +30,26 @@ void	binary(int pid, char *s)
 		bit = -1;
 		while (++bit < 9)
 		{
-			if (s[i] & (128 >> bit))
-			{
-				if (kill(pid, SIGUSR1) == -1)
-					exit(1);
-			}
-			else
-				if (kill(pid, SIGUSR2) == -1)
-					exit(1);
+			ft_kill(bit, pid, s[i]);
 			usleep(300);
 		}
 		if (!s[i])
 			break ;
 		i++;
+	}
+}
+
+void	ft_kill(int bit, int pid, char c)
+{
+	if (c & (128 >> bit))
+	{
+		if (kill(pid, SIGUSR1) == -1)
+			exit(1);
+	}
+	else
+	{
+		if (kill(pid, SIGUSR2) == -1)
+			exit(1);
 	}
 }
 
